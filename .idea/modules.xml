@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/API-Gateway/API-Gateway.iml" filepath="$PROJECT_DIR$/API-Gateway/API-Gateway.iml" />
+      <module fileurl="file://$PROJECT_DIR$/CurrencyConversionService/CurrencyConversionService.iml" filepath="$PROJECT_DIR$/CurrencyConversionService/CurrencyConversionService.iml" />
+      <module fileurl="file://$PROJECT_DIR$/CurrencyExchangeService/CurrencyExchangeService.iml" filepath="$PROJECT_DIR$/CurrencyExchangeService/CurrencyExchangeService.iml" />
+      <module fileurl="file://$PROJECT_DIR$/NamingServer/NamingServer.iml" filepath="$PROJECT_DIR$/NamingServer/NamingServer.iml" />
+      <module fileurl="file://$PROJECT_DIR$/LimitsService/limits-service.iml" filepath="$PROJECT_DIR$/LimitsService/limits-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/SpringCloudConfigServer/spring-cloud-config-server.iml" filepath="$PROJECT_DIR$/SpringCloudConfigServer/spring-cloud-config-server.iml" />
+    </modules>
+  </component>
+</project>

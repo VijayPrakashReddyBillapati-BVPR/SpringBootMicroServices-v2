@@ -1,0 +1,34 @@
+currency-exchange 
+	http://localhost:8000/currency-exchange/from/AUD/to/INR
+	http://localhost:8001/currency-exchange/from/AUD/to/INR
+	
+CurrencyConversion
+	http://localhost:8100/currency-conversion-feign/from/AUD/to/INR/quantity/11
+	http://localhost:8100/currency-conversion/from/AUD/to/INR/quantity/11
+	http://localhost:8100/currency-conversion-webflux/from/AUD/to/INR/quantity/11
+	
+NamingServer
+	http://localhost:8761/eureka
+	
+API-Gateway
+	http://localhost:8765/
+	
+	
+// WHEN spring.cloud.gateway.discovery.locator.enabled=true
+	//WRONG
+	http://localhost:8765/CurrencyExchangeService/currency-exchange/from/AUD/to/INR 
+	
+	//CORRECT
+	http://localhost:8765/CURRENCYEXCHANGESERVICE/currency-exchange/from/USD/to/INR
+	http://localhost:8765/CURRENCYCONVERSIONSERVICE/currency-conversion-webflux/from/AUD/to/INR/quantity/11
+	http://localhost:8765/CURRENCYCONVERSIONSERVICE/currency-conversion-feign/from/AUD/to/INR/quantity/11
+	
+	//CORRECT  when spring.cloud.gateway.discovery.locator.lower-case-service-id=true
+	http://localhost:8765/currencyconversionservice/currency-conversion-feign/from/AUD/to/INR/quantity/11
+	http://localhost:8765/currencyconversionservice/currency-conversion-webflux/from/AUD/to/INR/quantity/11
+	
+	
+	
+// WHEN  spring.cloud.gateway.discovery.locator.enabled=true is not enabled
+	http://localhost:8765/currency-exchange/from/USD/to/INR
+	http://localhost:8765/currency-conversion-feign/from/AUD/to/INR/quantity/11
