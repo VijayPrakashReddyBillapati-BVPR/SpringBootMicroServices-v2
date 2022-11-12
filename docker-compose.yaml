@@ -1,0 +1,61 @@
+version: '1.0'
+
+services: 
+  currency-exchange: 
+    image:  reddybvpr/springmicroservices-currency-exchange-service:0.0.1-SNAPSHOT
+    ports: 
+      - "8000:8000"
+    networks: 
+      - currency-network
+    depends_on: 
+      - naming-server
+    environment: 
+      eureka.client.service-url.defaultZone: http://naming-server:8761/eureka
+      spring.zipkin.base-url: http://zipkin-server:9411
+
+
+  currency-conversion: 
+    image:  reddybvpr/springmicroservices-currency-conversion-service:0.0.1-SNAPSHOT
+    ports: 
+      - "8100:8100"
+    networks: 
+      - currency-network
+    depends_on: 
+      - naming-server
+    environment: 
+      eureka.client.service-url.defaultZone: http://naming-server:8761/eureka
+      spring.zipkin.base-url: http://zipkin-server:9411
+      
+  api-gateway: 
+    image:  reddybvpr/springmicroservices-api-gateway:0.0.1-SNAPSHOT
+    ports: 
+      - "8765:8765"
+    networks: 
+      - currency-network
+    depends_on: 
+      - naming-server
+    environment: 
+      eureka.client.service-url.defaultZone: http://naming-server:8761/eureka
+      spring.zipkin.base-url: http://zipkin-server:9411
+      
+  zipkin-server: 
+    image:  openzipkin/zipkin:latest
+    ports: 
+      - "9411:9411"
+    networks: 
+      - currency-network
+      
+  naming-server: 
+    image:  reddybvpr/springmicroservices-naming-server:0.0.1-SNAPSHOT
+    mem_limit: 700m
+    ports: 
+      - "8761:8761"
+    networks: 
+      - currency-network
+    environment: 
+      spring.zipkin.base-url: http://zipkin-server:9411
+      
+      
+      
+networks: 
+  currency-network: 
